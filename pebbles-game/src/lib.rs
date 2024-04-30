@@ -1,19 +1,31 @@
 #![no_std]
 
+use gstd::exec;
+use gstd::msg;
 use pebbles_game_io::*;
 
 static mut PEBBLES_GAME: Option<GameState> = None;
 
+fn get_random_u32() -> u32 {
+    let salt = msg::id();
+    let (hash, _num) = exec::random(salt.into()).expect("get_random_u32(): random call failed");
+    u32::from_le_bytes([hash[0], hash[1], hash[2], hash[3]])
+}
+
 extern "C" fn init() {
-    //Code to initialize the game
     let init = PebblesInit::default();
+    let first_player = if get_random_u32() % 2 == 0 {
+        Player::User
+    } else {
+        Player::Program
+    };
     unsafe {
         PEBBLES_GAME = Some(GameState {
             pebbles_count: init.pebbles_count,
             max_pebbles_per_turn: init.max_pebbles_per_turn,
             pebbles_remaining: init.pebbles_count,
             difficulty: init.difficulty,
-            first_player: init.first_player,
+            first_player,
             winner: None,
         });
     }
@@ -21,6 +33,7 @@ extern "C" fn init() {
 
 extern "C" fn handle() {
     //Code to handle the game
+
     let action = PebblesAction::Turn(1); // This line might be replaced depending on the game's input handling
     unsafe {
         let game = PEBBLES_GAME.as_mut().unwrap();
@@ -32,7 +45,7 @@ extern "C" fn handle() {
                 {
                     game.pebbles_remaining -= pebbles_taken;
                     if game.pebbles_remaining == 0 {
-                        game.winner = Some(game.first_player);
+                        game.winner = Some(game.first_player.clone());
                     } else {
                         game.first_player = match game.first_player {
                             Player::User => Player::Program,
