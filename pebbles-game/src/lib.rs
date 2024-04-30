@@ -1,7 +1,7 @@
 #![no_std]
 
-use gstd::exec;
-use gstd::msg;
+use gstd::{exec, msg};
+
 use pebbles_game_io::*;
 
 static mut PEBBLES_GAME: Option<GameState> = None;
@@ -12,6 +12,7 @@ fn get_random_u32() -> u32 {
     u32::from_le_bytes([hash[0], hash[1], hash[2], hash[3]])
 }
 
+#[no_mangle]
 extern "C" fn init() {
     let init = PebblesInit::default();
     let first_player = if get_random_u32() % 2 == 0 {
@@ -31,6 +32,7 @@ extern "C" fn init() {
     }
 }
 
+#[no_mangle]
 extern "C" fn handle() {
     //Code to handle the game
 
