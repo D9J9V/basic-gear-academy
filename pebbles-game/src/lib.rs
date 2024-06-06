@@ -1,12 +1,12 @@
 #![no_std]
 
 use gstd::{exec, msg};
-
 use pebbles_game_io::*;
 
 static mut PEBBLES_GAME: Option<GameState> = None;
 
 fn get_random_u32() -> u32 {
+    //* There are two difficulty levels in the game: DifficultyLevel::Easy and DifficultyLevel::Hard. Program should choose the pebbles count to be removed randomly at the easy level, and find the best pebbles count (find a winning strategy) at the hard level.
     let salt = msg::id();
     let (hash, _num) = exec::random(salt.into()).expect("get_random_u32(): random call failed");
     u32::from_le_bytes([hash[0], hash[1], hash[2], hash[3]])
@@ -14,32 +14,51 @@ fn get_random_u32() -> u32 {
 
 #[no_mangle]
 extern "C" fn init() {
-    let init = PebblesInit::default();
+    { /* Write init() function that:
+
+         Receives PebblesInit using the msg::load function;
+         Checks input data for validness;
+         Chooses the first player using the exec::random function;
+         Processes the first turn if the first player is Program.
+         Fills the GameState structure.*/
+    }
+    let init = PebblesInit = msg::load().expect("Not Loaded");
+
     let first_player = if get_random_u32() % 2 == 0 {
         Player::User
     } else {
         Player::Program
     };
+
+    state = GameState {
+        pebbles_count: init.pebbles_count,
+        max_pebbles_per_turn: init.max_pebbles_per_turn,
+        pebbles_remaining: init.pebbles_count,
+        difficulty: init.difficulty,
+        first_player,
+        winner: None,
+    };
     unsafe {
-        PEBBLES_GAME = Some(GameState {
-            pebbles_count: init.pebbles_count,
-            max_pebbles_per_turn: init.max_pebbles_per_turn,
-            pebbles_remaining: init.pebbles_count,
-            difficulty: init.difficulty,
-            first_player,
-            winner: None,
-        });
+        PEBBLES_GAME = Some(state);
+        msg::reply_bytes("Initialized", 0).expect("Not initialized");
     }
 }
 
 #[no_mangle]
 extern "C" fn handle() {
-    //Code to handle the game
+    { /*Write the handle() function that:
 
-    let action = PebblesAction::Turn(1); // This line might be replaced depending on the game's input handling
+         Receives PebblesAction using msg::load function;
+         Checks input data for validness;
+         Processes the User's turn and check whether they win;
+         Processes the Program turn and check whether it wins;
+         Send a message to the user with the correspondent PebblesEvent; */
+    }
+    let action: PebblesAction = msg::load().expect("Action not loaded");
+
     unsafe {
-        let game = PEBBLES_GAME.as_mut().unwrap();
-        match action {
+        let game = PEBBLES_GAME.as_mut().expect("Game state not loaded");
+        let result: PebblesEvent = match action {
             PebblesAction::Turn(pebbles_taken) => {
                 if pebbles_taken >= 1
                     && pebbles_taken <= game.max_pebbles_per_turn
@@ -78,15 +97,16 @@ extern "C" fn handle() {
                 };
                 game.winner = None;
             }
-        }
-    }
+        };
+    };
+    msg::reply(result, 0).expect("Failed to encode/reply event")
 }
 
 #[no_mangle]
 extern "C" fn state() {
-    //Code to get the game state
+    //Write the state() function that returns the GameState structure using the msg::reply function.
     unsafe {
-        let game = PEBBLES_GAME.as_ref().unwrap();
-        let _ = game;
+        let game = PEBBLES_GAME.take().expect("Game state not loaded");
+        msg::reply(game, 0).expect("State not shared")
     }
 }
