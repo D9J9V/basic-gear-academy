@@ -1,0 +1,1 @@
+/Users/d9j9v/Code/Gear/basic-gear-academy/target/debug/libpebbles_game.rlib: /Users/d9j9v/Code/Gear/basic-gear-academy/build.rs /Users/d9j9v/Code/Gear/basic-gear-academy/io/src/lib.rs /Users/d9j9v/Code/Gear/basic-gear-academy/src/lib.rs /Users/d9j9v/Code/Gear/basic-gear-academy/target/wasm-projects/debug/wasm32-unknown-unknown/debug/pebbles_game.stamp

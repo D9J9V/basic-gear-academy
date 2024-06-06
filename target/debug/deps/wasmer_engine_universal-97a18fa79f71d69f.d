@@ -1,0 +1,14 @@
+/Users/d9j9v/Code/Gear/pebbles-game/target/debug/deps/libwasmer_engine_universal-97a18fa79f71d69f.rmeta: /Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/lib.rs /Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/artifact.rs /Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/builder.rs /Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/code_memory.rs /Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/engine.rs /Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/link.rs /Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/unwind/mod.rs /Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/unwind/systemv.rs
+
+/Users/d9j9v/Code/Gear/pebbles-game/target/debug/deps/wasmer_engine_universal-97a18fa79f71d69f.d: /Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/lib.rs /Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/artifact.rs /Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/builder.rs /Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/code_memory.rs /Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/engine.rs /Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/link.rs /Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/unwind/mod.rs /Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/unwind/systemv.rs
+
+/Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/lib.rs:
+/Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/artifact.rs:
+/Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/builder.rs:
+/Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/code_memory.rs:
+/Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/engine.rs:
+/Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/link.rs:
+/Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/unwind/mod.rs:
+/Users/d9j9v/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasmer-engine-universal-2.3.0/src/unwind/systemv.rs:
+
+# env-dep:CARGO_PKG_VERSION=2.3.0
