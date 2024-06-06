@@ -22,7 +22,7 @@ extern "C" fn init() {
          Processes the first turn if the first player is Program.
          Fills the GameState structure.*/
     }
-    let init = PebblesInit = msg::load().expect("Not Loaded");
+    let init: PebblesInit = msg::load().expect("Not Loaded");
 
     let first_player = if get_random_u32() % 2 == 0 {
         Player::User
@@ -30,7 +30,7 @@ extern "C" fn init() {
         Player::Program
     };
 
-    state = GameState {
+    let state = GameState {
         pebbles_count: init.pebbles_count,
         max_pebbles_per_turn: init.max_pebbles_per_turn,
         pebbles_remaining: init.pebbles_count,
@@ -99,7 +99,7 @@ extern "C" fn handle() {
             }
         };
     };
-    msg::reply(result, 0).expect("Failed to encode/reply event")
+    msg::reply(result, 0).expect("Failed to encode/reply event");
 }
 
 #[no_mangle]
