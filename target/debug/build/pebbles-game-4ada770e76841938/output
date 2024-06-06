@@ -1,1 +1,1 @@
-cargo:rerun-if-changed=/Users/d9j9v/Code/Gear/basic-gear-academy/pebbles-game/target/wasm-projects/debug/wasm32-unknown-unknown/debug/pebbles_game.stamp
+cargo:rerun-if-changed=/Users/d9j9v/Code/Gear/basic-gear-academy/target/wasm-projects/debug/wasm32-unknown-unknown/debug/pebbles_game.stamp
